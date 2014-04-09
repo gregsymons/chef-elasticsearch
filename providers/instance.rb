@@ -1,4 +1,3 @@
-
 def initialize(new_resource, run_context)
   super
   @new_resource = new_resource
@@ -166,6 +165,7 @@ def manage_service_init(action)
     bin_path: instance_binary,
     env_vars_file: instance_environment_vars_file,
     pid_file: "#{instance_installation_configuration_dir}/elasticsearch-#{@new_resource.name}.pid",
+    config_path: instance_configuration_dir,
     name: @new_resource.name,
     user: @user,
     mlockall: @mlockall
