@@ -19,7 +19,7 @@ case "$1" in
     <% if @mlockall -%>
     ulimit -l unlimited
     <% end -%>
-    start-stop-daemon --start -b --user "<%= @user %>" -c "<%= @user %>" --pidfile "${PIDFILE}" --exec <%= @bin_path %> -- -p ${PIDFILE}
+    start-stop-daemon --start -b --user "<%= @user %>" -c "<%= @user %>" --pidfile "${PIDFILE}" --exec <%= @bin_path %> -- -p ${PIDFILE} --path.conf=<%= @config_path %>
     #su - <%= @user -%> -c ". <%= @env_vars_file %>; <%= @bin_path %> -p ${PIDFILE}" > /dev/null
     log_end_msg $?
   ;;
